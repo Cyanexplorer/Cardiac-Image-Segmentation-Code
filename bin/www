@@ -6,7 +6,7 @@
 
 var app = require('../app');
 var debug = require('debug')('web:server');
-var https = require('https');
+var http = require('http');
 var fs = require('fs')
 
 /**
@@ -16,16 +16,7 @@ var fs = require('fs')
 var port = normalizePort(process.env.PORT || '3300');
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
- var options = {
-  key: fs.readFileSync('./key/client-key.pem'),
-  ca: fs.readFileSync('./key/client.csr'),
-  cert: fs.readFileSync('./key/client-cert.pem')
-};
-
-var server = https.createServer(options, app);
+var server = https.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
