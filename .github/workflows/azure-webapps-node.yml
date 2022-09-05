@@ -49,6 +49,7 @@ jobs:
         npm install
         npm run build --if-present
         npm run test --if-present
+        echo github.ref
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v3
@@ -57,7 +58,7 @@ jobs:
         path: .
 
   deploy_dev:
-    if: $GITHUB_REF_NAME == 'dev-aws'
+    if: github.ref == 'dev-aws'
     permissions:
       contents: none
     runs-on: ubuntu-latest
@@ -81,7 +82,7 @@ jobs:
         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
         
   deploy:
-    if: $GITHUB_REF_NAME == 'main'
+    if: github.ref == 'main'
     permissions:
       contents: none
     runs-on: ubuntu-latest
