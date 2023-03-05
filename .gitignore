@@ -8,4 +8,5 @@
 .externalNativeBuild
 .cxx
 /node_modules
+/public/target
 local.properties
