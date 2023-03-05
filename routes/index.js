@@ -1,6 +1,5 @@
 var express = require('express');
 var multer  = require('multer');
-const { path } = require('../app');
 var router = express.Router();
 var upload = multer();
 
